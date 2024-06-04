@@ -8,5 +8,6 @@ This package contains definitions for the cordova plugin [cordava-plugin-file](h
 Files were exported from https://github.com/adamclayd/cordova-plugin-types/tree/main/cordova-plugin-file
 
 ### Additional Details
-* Last updated: Tue, 04 Jun 2024 12:36:50 GMT
+* Last Updated: Tue, 04 Jun 2024 12:36:50 GMT
+* Plugin Version: 8.0.3
 * Dependencies: none

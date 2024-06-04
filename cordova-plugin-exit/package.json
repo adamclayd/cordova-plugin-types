@@ -1,6 +1,6 @@
 {
   "name": "@types/cordova-plugin-exit",
-  "version": "1.0.3",
+  "version": "1.0.0",
   "description": "TypeScript typings for the cordova plugin cordova-plugin-exit",
   "license": "MIT",
   "author": {
@@ -10,7 +10,7 @@
   "types": "index.d.ts",
   "keywords": [
     "cordova",
-    "file",
+    "exit",
     "tyoes",
     "@types",
     "plugin",

@@ -1,6 +1,6 @@
 {
   "name": "@types/cordova-plugin-local-notification",
-  "version": "0.9.0-beta.4",
+  "version": "1.0.0",
   "description": "TypeScript typings for the cordova plugin cordova-plugin-local-notification",
   "license": "MIT",
   "author": {
@@ -10,7 +10,8 @@
   "types": "index.d.ts",
   "keywords": [
     "cordova",
-    "file",
+    "notification",
+    "notifications",
     "tyoes",
     "@types",
     "plugin",
@@ -24,7 +25,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/adamclayd/cordova-plugin-types.git",
-    "directory": "cordova-plugin-file"
+    "directory": "cordova-plugin-local-notification"
   },
   "dependencies": {
   },

@@ -8,61 +8,9 @@ interface LocalNotificationAction {
     icon?: string | null;
     emptyText?: string;
     submitTitle?: boolean;
+    editable: boolean;
     choices?: string[];
     defaultValue?: string;
-}
-
-interface FixTrigger {
-    at: Date;
-    type?: string;
-}
-
-interface TimespanTrigger {
-    in: number;
-    unit: 'second' |  'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year';
-    type?: string
-}
-
-interface RepeatTrigger {
-    count?: number;
-    every: 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year' | {
-        second?: number;
-        minute?: number;
-        hour?: number;
-        day?: number;
-        weekdayOrdinal?: number;
-        week?: number;
-        weekOfMonth: number;
-        month: number;
-        quarter: number,
-        year: number;
-    };
-    before?: Date;
-    firstAt?: Date;
-    type?: string;
-}
-
-interface LocationTrigger {
-    type: 'location';
-    center: [number, number];
-    radius?: number;
-    notifyOnEntry?: boolean;
-    notifyOnExit?: boolean;
-    single?: boolean;
-}
-
-type LocalNotificationTrigger = FixTrigger | TimespanTrigger | RepeatTrigger | LocationTrigger;
-
-type LocalNotificationLed = null | boolean | string | [string, number?, number?] | {
-    on?: number;
-    off?: number;
-};
-
-type LocalNotificationProgressBar = boolean | {
-    enabled?: boolean;
-    value?: number;
-    maxValue?: number;
-    intermediate?: boolean;
 }
 
 interface LocalNotification {
@@ -72,7 +20,7 @@ interface LocalNotification {
     autoClear?: boolean;
     badge?: number | null;
     channel?: string | null;
-    color?: string;
+    color?: string | null;
     data?: any;
     defaults?: number;
     foreground?: boolean;
@@ -81,21 +29,54 @@ interface LocalNotification {
     icon?: string | null;
     id?: number;
     launch?: boolean;
-    led?: LocalNotificationLed;
+    led?: boolean | string | [string, number?, number?] | {
+        on?: number;
+        off?: number;
+    };
     lockscreen?: boolean;
     mediaSession?: string | null;
     number?: number;
     priority?: number;
-    progressBar?: LocalNotificationProgressBar;
+    progressBar?: boolean | {
+        enabled?: boolean;
+        value?: number;
+        maxValue?: number;
+        intermediate?: boolean;
+    };
     showWhen?: boolean;
     silent?: boolean;
-    smallIcon?: boolean;
+    smallIcon?: string;
     sound?: boolean | string;
     sticky?: boolean;
-    summary?: string;
+    summary?: string | null;
     text?: string;
     title?: string;
-    trigger?: LocalNotificationTrigger;
+    trigger?: {
+        at: Date;
+        before?: Date;
+        center: [number, number];
+        count?: number;
+        every: 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year' | {
+            second?: number;
+            minute?: number;
+            hour?: number;
+            day?: number;
+            weekdayOrdinal?: number;
+            week?: number;
+            weekOfMonth: number;
+            month: number;
+            quarter: number,
+            year: number;
+        };
+        firstAt?: Date;
+        in: number;
+        notifyOnEntry?: boolean;
+        notifyOnExit?: boolean;
+        radius?: number;
+        single?: boolean;
+        type?: string;
+        unit: 'second' |  'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year';
+    }
     vibrate?: boolean;
     wakeup?: boolean;
 }
@@ -126,7 +107,11 @@ interface CordovaPlugins {
             getDefaults(): LocalNotification;
             setDefaults(defaults: LocalNotification): void;
             on(event: string, callback?: Function, scope?: Object): void;
-            un(event: string, callback?: Function);
+            un(event: string, callback?: Function): void;
+        }
+
+        core: {
+            fireEvent(event: string, ...args: any[]): void;
         }
     }
 }

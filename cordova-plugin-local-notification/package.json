@@ -1,0 +1,6 @@
+{
+  "name": "@types/cordova-plugin-local-notification",
+  "version": "1.0.0",
+  "dependencies": {
+  }
+}
